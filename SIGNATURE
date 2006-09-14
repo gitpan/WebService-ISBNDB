@@ -1,0 +1,44 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 02da0ba70cac1ebb9ac45c631ca6a51ea8d58803 Build.PL
+SHA1 bc7eab1426996280fee1badbc30d4afd32ec7758 ChangeLog
+SHA1 0bd3d4ca49f9a1d31ebb69ec3d385f8c0ca7d46d ChangeLog.xml
+SHA1 c1584d6358376b766946fa98fe50a4dffd69a643 MANIFEST
+SHA1 e47bc0568fece0725756e00a4707fcf11aa346d1 MANIFEST.SKIP
+SHA1 bb51a06bf9ef9577d3d3c34272578cf3af722360 META.yml
+SHA1 e68b1275d6685165e050ef740a38348bfc5ff98e Makefile.PL
+SHA1 b1ae754ea5d06dc7d4d038bcf6c441295d191229 README
+SHA1 a9283489bd29f8605143c4cee247a67e7beafa46 etc/ChangeLogML.xsd
+SHA1 ae84685675ce907361929c44e677fa6a73dfe9a1 lib/WebService/ISBNDB/API.pm
+SHA1 cf84c5c40a5b8eb99adbac59a714868389b01859 lib/WebService/ISBNDB/API/Authors.pm
+SHA1 aa8de188198dfe682f3ce568674d1e039db1b8be lib/WebService/ISBNDB/API/Books.pm
+SHA1 160f02c585183da8f1437f04b268ccbf87e31dc1 lib/WebService/ISBNDB/API/Categories.pm
+SHA1 931e86925039313f7e7d729b95d75c95e905fe0b lib/WebService/ISBNDB/API/Publishers.pm
+SHA1 9fb8d1b9939c1ea63b0c00a286797c8b307752fe lib/WebService/ISBNDB/API/Subjects.pm
+SHA1 6ed49c4545050a546091d060620b40cf808914b8 lib/WebService/ISBNDB/Agent.pm
+SHA1 5fe41d246b12b9d26903521ad31566539e3e087d lib/WebService/ISBNDB/Agent/REST.pm
+SHA1 daa50dc8b02faf5ea335943c26035a4a34638652 t/00_load.t
+SHA1 4aeb184c9bed26ab6c3be1ebdb8470c0cb353b1f t/00_signature.t
+SHA1 61aaa7b194f40ab67ea169bf93c7fb24d8824c49 t/01_pod.t
+SHA1 fbffbb7a0428e951de7c62b05a1014aed5257093 t/02_pod_coverage.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2.2 (GNU/Linux)
+
+iD8DBQFFCR6i3Cp33jjp81URAriTAJ4ztgnx7ovlk+JU0TwBBto3V/kHjwCfZArX
+6XC97oAjSnP7iKvot0SIZ8U=
+=5ASj
+-----END PGP SIGNATURE-----
