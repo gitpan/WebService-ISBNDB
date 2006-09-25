@@ -8,11 +8,12 @@
 #
 ###############################################################################
 #
-#   $Id: Authors.pm 12 2006-09-14 08:50:39Z  $
+#   $Id: Authors.pm 22 2006-09-25 02:14:52Z  $
 #
 #   Description:    Specialization of the API class for author data.
 #
 #   Functions:      BUILD
+#                   new
 #                   copy
 #                   find
 #                   set_id
@@ -24,6 +25,7 @@
 #
 #   Libraries:      Class::Std
 #                   Error
+#                   WebService::ISBNDB::API
 #
 #   Global Consts:  $VERSION
 #
@@ -34,13 +36,14 @@ package WebService::ISBNDB::API::Authors;
 use 5.6.0;
 use strict;
 use warnings;
+no warnings 'redefine';
 use vars qw($VERSION);
 use base 'WebService::ISBNDB::API';
 
 use Class::Std;
 use Error;
 
-$VERSION = "0.10";
+$VERSION = "0.20";
 
 my %id         : ATTR(:init_arg<id> :get<id> :default<>);
 my %name       : ATTR(:name<name>            :default<>);
@@ -50,6 +53,19 @@ my %dates      : ATTR(:name<dates>           :default<>);
 my %has_books  : ATTR(:name<has_books>       :default<>);
 my %categories : ATTR(:init_arg<categories>  :default<>);
 my %subjects   : ATTR(:init_arg<subjects>    :default<>);
+
+###############################################################################
+#
+#   Sub Name:       new
+#
+#   Description:    Pass off to the super-class constructor, which handles
+#                   the special cases for arguments.
+#
+###############################################################################
+sub new
+{
+    shift->SUPER::new(@_);
+}
 
 ###############################################################################
 #

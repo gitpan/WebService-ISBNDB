@@ -14,31 +14,68 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 02da0ba70cac1ebb9ac45c631ca6a51ea8d58803 Build.PL
-SHA1 bc7eab1426996280fee1badbc30d4afd32ec7758 ChangeLog
-SHA1 0bd3d4ca49f9a1d31ebb69ec3d385f8c0ca7d46d ChangeLog.xml
-SHA1 c1584d6358376b766946fa98fe50a4dffd69a643 MANIFEST
+SHA1 3840ed8e72c9e08bb72ae7354dfc2fcd3edcf5e8 Build.PL
+SHA1 7076fb3eb8fcda7218e1ed1d2b8eb88937f18608 ChangeLog
+SHA1 0651a40eb291e4167a06c1cea18206e95256cb94 ChangeLog.xml
+SHA1 76306b413860e5e4f82676e0c95275b7170a0d19 MANIFEST
 SHA1 e47bc0568fece0725756e00a4707fcf11aa346d1 MANIFEST.SKIP
-SHA1 bb51a06bf9ef9577d3d3c34272578cf3af722360 META.yml
+SHA1 f3f1ff028a63a7a29ed1e309cc68872464a06e73 META.yml
 SHA1 e68b1275d6685165e050ef740a38348bfc5ff98e Makefile.PL
-SHA1 b1ae754ea5d06dc7d4d038bcf6c441295d191229 README
+SHA1 c82237445b724e6059dea156e0068ccb0b16e59b README
 SHA1 a9283489bd29f8605143c4cee247a67e7beafa46 etc/ChangeLogML.xsd
-SHA1 ae84685675ce907361929c44e677fa6a73dfe9a1 lib/WebService/ISBNDB/API.pm
-SHA1 cf84c5c40a5b8eb99adbac59a714868389b01859 lib/WebService/ISBNDB/API/Authors.pm
-SHA1 aa8de188198dfe682f3ce568674d1e039db1b8be lib/WebService/ISBNDB/API/Books.pm
-SHA1 160f02c585183da8f1437f04b268ccbf87e31dc1 lib/WebService/ISBNDB/API/Categories.pm
-SHA1 931e86925039313f7e7d729b95d75c95e905fe0b lib/WebService/ISBNDB/API/Publishers.pm
-SHA1 9fb8d1b9939c1ea63b0c00a286797c8b307752fe lib/WebService/ISBNDB/API/Subjects.pm
-SHA1 6ed49c4545050a546091d060620b40cf808914b8 lib/WebService/ISBNDB/Agent.pm
-SHA1 5fe41d246b12b9d26903521ad31566539e3e087d lib/WebService/ISBNDB/Agent/REST.pm
+SHA1 aa263977eb8de1923a45b808d0202b2343b53d07 lib/WebService/ISBNDB/API.pm
+SHA1 00fd5a02ff7d13b7f89454b64952c9691bb28f0c lib/WebService/ISBNDB/API/Authors.pm
+SHA1 0ef54d0f7a63662f7082d7e7b89451d8b329a995 lib/WebService/ISBNDB/API/Books.pm
+SHA1 c241a2820ba6d7e73cbc614bdd1575241a5e5546 lib/WebService/ISBNDB/API/Categories.pm
+SHA1 ef88c72760eb7f98b2cd55786006491968a18049 lib/WebService/ISBNDB/API/Publishers.pm
+SHA1 1f662c3a2db5c695318b2c861e84da7e3edbe706 lib/WebService/ISBNDB/API/Subjects.pm
+SHA1 5ecbcf0c6729dea36725cde8d4bc266ab7f32337 lib/WebService/ISBNDB/Agent.pm
+SHA1 a2b3db57fd12001f6a1d5c46247149ce67cd536f lib/WebService/ISBNDB/Agent/REST.pm
 SHA1 daa50dc8b02faf5ea335943c26035a4a34638652 t/00_load.t
-SHA1 4aeb184c9bed26ab6c3be1ebdb8470c0cb353b1f t/00_signature.t
-SHA1 61aaa7b194f40ab67ea169bf93c7fb24d8824c49 t/01_pod.t
-SHA1 fbffbb7a0428e951de7c62b05a1014aed5257093 t/02_pod_coverage.t
+SHA1 93cf406b6843f5392811fa436bee8d134c110942 t/00_signature.t
+SHA1 ce62f7d2c44c372cf352392bbac1ed0601c60165 t/01_pod.t
+SHA1 8fbeb15969f1b52213bd470f36740c426ba64fcb t/02_pod_coverage.t
+SHA1 8501d226c9b34a8120078d462e2a288cf971a589 t/05_api_baseclass.t
+SHA1 a5648041a213e8d3224e24229f646a6eac8963ed t/07_agent_baseclass.t
+SHA1 4dddd6954d007aad05e60baaf046c973c9894746 t/10_categories.t
+SHA1 61d473ee1f4f41e9a66be213b1366015f114bc3a t/20_publishers.t
+SHA1 ba44ca27458404f01c99580d225a748edfc3b53f t/30_subjects.t
+SHA1 2c770a686299eccbe4f7ce32f8ae6e1e8a703775 t/40_authors.t
+SHA1 c6687aeaca1b2029c597ba680db7a24662c99f78 t/50_books.t
+SHA1 3b51cadd7a22a9899b3dbb0a4bd3f25fef346beb t/Authors-person_id=kulchenko_pavel.xml
+SHA1 94ad12de99d3f250b948cb51d7753fd31577279b t/Authors-person_id=ray_randy_j.xml
+SHA1 de764063c6adc162cda25992c0be7a3553b6591f t/Books-isbn=0596002068.xml
+SHA1 562b301f2529a6ac85d7b8a80bb2a9a65cc0db9d t/Categories-category_id=alphabetically.authors.r.a.y.xml
+SHA1 6a4eeda5399e2594d3e9f2c74ae3617c74281ddd t/Categories-category_id=alphabetically.publishers.o.r.xml
+SHA1 5cab4f4b98ded2f16628f92d3b1d62ef637e32d4 t/Categories-category_id=computers.programming.languages.perl.xml
+SHA1 458f80676399a3a908b79911e7651b566d633c0c t/Categories-category_id=science.astronomy.xml
+SHA1 99e9b8fc6ef720b51f4afc6fda89673e5dffbc37 t/Categories-category_id=science.biology.xml
+SHA1 2030fe91360a32e880878fdd705a9d7501c34a0e t/Categories-category_id=science.botany.xml
+SHA1 c14dd74224167fd2ac65a3989b31c38e2f55b458 t/Categories-category_id=science.chemistry.xml
+SHA1 f6264a2a142ba4d48585a62b75160779b3368c51 t/Categories-category_id=science.computer_science.xml
+SHA1 9e7a1137a057f12cdecf3f9468dc94cead72a2b5 t/Categories-category_id=science.earth_sciences.xml
+SHA1 918bd50ea761d45b3636ab9286c53cd9996e2244 t/Categories-category_id=science.economics.xml
+SHA1 abce6e0456c6c7a56b3df12a2e0173a799fc41cd t/Categories-category_id=science.geography.xml
+SHA1 9e7b33f408db3996ff81192e1a2e1cf774c42c29 t/Categories-category_id=science.mathematics.xml
+SHA1 10be845fdf05e5f994407efd01fc4bdfad6da86f t/Categories-category_id=science.mineralogy.xml
+SHA1 7356bd08739d1054e91617c3c2677ba83592427b t/Categories-category_id=science.paleontology.xml
+SHA1 5248519e612a0c26383d9947d8e00c57adc20335 t/Categories-category_id=science.philosophy.xml
+SHA1 c3bba271af9a746efd3ef0579647fd7d8ebed8a6 t/Categories-category_id=science.physics.xml
+SHA1 df120ef7bc491b01937372350e3fa149332863f5 t/Categories-category_id=science.political_science.xml
+SHA1 d86c12a9f23596108c9248b9ada71ac2f7d105ed t/Categories-category_id=science.psychology.xml
+SHA1 5db30478fb8b1f392ec60085a03ed2ce3c929cf7 t/Categories-category_id=science.social_sciences.xml
+SHA1 6502ec8d08fac2dad4cfe6c8bad6162b4c00efe3 t/Categories-category_id=science.sociology.xml
+SHA1 f4c8029208f19859f287b109719efa1a5c70189e t/Categories-category_id=science.xml
+SHA1 56cc859e1c620f9e89d61dab43894df7e7754986 t/DUMMY.pm
+SHA1 f6a59b98a34bac0bc4ca1c67c788fe2309eed381 t/Publishers-publisher_id=oreilly.xml
+SHA1 e0c0ffa9a1529119be72d2537f5a3905c8294159 t/Subjects-subject_id=internet_programming.xml
+SHA1 05626c3f827f5f57998332c66b7e07a01f2d6fd3 t/Subjects-subject_id=perl_computer_program_language.xml
+SHA1 443ba270a092c80e714e4d3657f4ff0997049204 t/testing.key
+SHA1 ce15cef51040202b110e5379d52c6cb85e1542b5 t/util.pl
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.2.2 (GNU/Linux)
 
-iD8DBQFFCR6i3Cp33jjp81URAriTAJ4ztgnx7ovlk+JU0TwBBto3V/kHjwCfZArX
-6XC97oAjSnP7iKvot0SIZ8U=
-=5ASj
+iD8DBQFFF0V33Cp33jjp81URAjUsAJ9fMiJXGOvPJSfUMg8GporO3pZtKwCeK1Ur
+mzFqAKg1xFcBl0bpjrJ1wOw=
+=Pcf1
 -----END PGP SIGNATURE-----

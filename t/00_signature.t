@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+# $Id: 00_signature.t 19 2006-09-20 06:03:06Z  $
+
 use strict;
 use Test::More;
 
