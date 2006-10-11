@@ -1,8 +1,8 @@
 ###############################################################################
 #
-# $Id: Makefile.PL 14 2006-09-14 09:16:01Z  $
+# $Id: Makefile.PL 34 2006-10-11 09:07:36Z  $
 #
-# This is the MakeMaker skeleton for Net::ISBNDB. Now a wrapper around
+# This is the MakeMaker skeleton for WebService::ISBNDB, a wrapper around
 # Module::Build.
 #
 ###############################################################################

@@ -8,7 +8,7 @@
 #
 ###############################################################################
 #
-#   $Id: Agent.pm 22 2006-09-25 02:14:52Z  $
+#   $Id: Agent.pm 33 2006-10-11 08:45:42Z  $
 #
 #   Description:    This is the base class for all protocol agents. It provides
 #                   the skeletal functionality and management of the LWP::UA
@@ -17,7 +17,7 @@
 #   Functions:      add_protocol
 #                   BUILD
 #                   class_for_protocol
-#                   get_agent
+#                   get_useragent
 #                   new
 #                   protocol
 #                   raw_request
@@ -30,7 +30,7 @@
 #                   request_single
 #                   request_uri
 #                   resolve_obj
-#                   set_agent
+#                   set_useragent
 #                   _lr_trim
 #
 #   Libraries:      Class::Std
@@ -57,7 +57,7 @@ use URI;
 use LWP::UserAgent;
 use HTTP::Request;
 
-$VERSION = "0.20";
+$VERSION = "0.30";
 
 BEGIN
 {
@@ -65,7 +65,7 @@ BEGIN
     %PROTOS = map { $_ => __PACKAGE__ . "::$_" } @PROTOS;
 }
 
-my %agent      : ATTR(:init_arg<agent>  :default<>);
+my %useragent      : ATTR(:init_arg<useragent>  :default<>);
 my %agent_args : ATTR(:name<agent_args> :default<>);
 
 ##############################################################################
@@ -127,9 +127,9 @@ sub BUILD
 {
     my ($self, $id, $args) = @_;
 
-    throw Error::Simple("Value for 'agent' must derive from LWP::UserAgent")
-        if ($args->{agent} and
-            ! (ref($args->{agent}) and $args->{agent}->isa('LWP::UserAgent')));
+    throw Error::Simple("Value for 'useragent' must derive from LWP::UserAgent")
+        if ($args->{useragent} and
+            ! (ref($args->{useragent}) and $args->{useragent}->isa('LWP::UserAgent')));
     throw Error::Simple("Value for 'agent_args' must be a hash reference")
         if ($args->{agent_args} and (ref($args->{agent_args}) ne 'HASH'));
 
@@ -138,7 +138,7 @@ sub BUILD
 
 ###############################################################################
 #
-#   Sub Name:       get_agent
+#   Sub Name:       get_useragent
 #
 #   Description:    Retrieve the LWP::Agent object used by this object. Create
 #                   it if it isn't already allocated.
@@ -146,45 +146,45 @@ sub BUILD
 #   Arguments:      NAME      IN/OUT  TYPE      DESCRIPTION
 #                   $self     in      ref       Object
 #
-#   Globals:        %agent
+#   Globals:        %useragent
 #
 #   Returns:        Success:    LWP::UserAgent isntance
 #                   Failure:    throws Error::Simple
 #
 ###############################################################################
-sub get_agent
+sub get_useragent
 {
     my $self = shift;
-    my $agent = $agent{ident $self};
+    my $useragent = $useragent{ident $self};
 
-    unless ($agent)
+    unless ($useragent)
     {
-        my $agent_args = $agent_args{ident $self};
+        my $useragent_args = $agent_args{ident $self};
 
-        $agent = LWP::UserAgent->new(%$agent_args);
+        $useragent = LWP::UserAgent->new(%$useragent_args);
     }
 
-    $agent;
+    $useragent;
 }
 
 ###############################################################################
 #
-#   Sub Name:       set_agent
+#   Sub Name:       set_useragent
 #
-#   Description:    Assign a new agent to the object. The agent must derive
+#   Description:    Assign a new useragent to the object. The agent must derive
 #                   from LWP::UserAgent.
 #
 #   Arguments:      NAME      IN/OUT  TYPE      DESCRIPTION
 #                   $self     in      ref       Object
 #                   $agent    in      ref       New agent object
 #
-#   Globals:        %agent
+#   Globals:        %useragent
 #
 #   Returns:        Success:    $self
 #                   Failure:    throws Error::Simple
 #
 ###############################################################################
-sub set_agent
+sub set_useragent
 {
     my ($self, $agent) = @_;
 
@@ -192,7 +192,7 @@ sub set_agent
         unless (! defined $agent or
                 (ref($agent) and $agent->isa('LWP::UserAgent')));
 
-    $agent{ident $self} = $agent;
+    $useragent{ident $self} = $agent;
 
     $self;
 }
@@ -335,9 +335,7 @@ sub request_single
 {
     my ($self, $obj, $args) = @_;
 
-    my $content = $self->request($obj, $args, 'single');
-
-    return (ref($content) eq 'ARRAY') ? $content->[0] : $content;
+    $self->request($obj, $args)->first;
 }
 
 ###############################################################################
@@ -345,7 +343,7 @@ sub request_single
 #   Sub Name:       request_all
 #
 #   Description:    Make a request, returning all the matching records as
-#                   objects, in an array reference.
+#                   objects, in an Iterator instance.
 #
 #   Arguments:      NAME      IN/OUT  TYPE      DESCRIPTION
 #
@@ -361,9 +359,7 @@ sub request_all
 {
     my ($self, $obj, $args) = @_;
 
-    my $content = $self->request($obj, $args);
-
-    return (ref($content) eq 'ARRAY') ? $content : [ $content ];
+    $self->request($obj, $args);
 }
 
 ###############################################################################
@@ -542,7 +538,7 @@ sub raw_request : RESTRICTED
         unless $uri;
 
     my $request = HTTP::Request->new($method, $uri, $headers, $$body);
-    my $UA = $self->get_agent;
+    my $UA = $self->get_useragent;
 
     # Make the request, check for problems
     my $response = $UA->request($request);
@@ -647,7 +643,7 @@ attributes for this class are:
 
 =over 4
 
-=item agent
+=item useragent
 
 The user-agent (an instance or derivative of B<LWP::UserAgent>) used to make
 all the HTTP requests to the service. Unless explicitly provided by the user,
@@ -671,14 +667,14 @@ The following accessor methods are provided by this class:
 
 =over 4
 
-=item get_agent
+=item get_useragent
 
 Retrieve the user-agent this object uses for HTTP communication. The creation
 of this object is delayed until the first request to fetch it (unless the
 user has explicitly set the agent, or provided an agent in the construction
 of the B<WebService::ISBNDB::Agent>-derived object).
 
-=item set_agent($AGENT)
+=item set_useragent($AGENT)
 
 Explicitly set the user-agent for this object to use. The new value must be
 an instance of B<LWP::UserAgent>, or an object of a class that is derived
@@ -693,7 +689,7 @@ instance. If none have been set, the value returned will be C<undef>.
 
 Set a new hash reference of arguments to be used when the user-agent is
 instantiated. Note that the object will instantiate the user-agent at most
-once, so setting this after the first call to B<get_agent> (or after
+once, so setting this after the first call to B<get_useragent> (or after
 explicitly setting the agent attribute) will have no effect. The value of
 C<$ARGS> must be a hash reference, or an exception will be thrown.
 
@@ -902,8 +898,9 @@ decendents.
 
 =back
 
-All of the methods marked with an "R" (those that are restricted to this
-class and its decendants) return no content from their versions in this class.
+All of the request-construction methods (request_uri(), request_headers(),
+request_body() and request_method()) return no content (or null content) from
+their versions in this class.
 It is expected that implementation classes will override those that need to
 have content (certainly B<request_uri> and B<request_method>), and leave
 those that are not relevant to the protocol (REST, for example, does not need

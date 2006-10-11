@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: 20_publishers.t 21 2006-09-25 01:48:00Z  $
+# $Id: 20_publishers.t 32 2006-10-10 21:36:09Z  $
 
 use strict;
 
@@ -13,11 +13,6 @@ use WebService::ISBNDB::API::Publishers;
 my $dir = dirname $0;
 do "$dir/util.pl";
 do "$dir/DUMMY.pm";
-
-if (! can_connect_isbndb())
-{
-    plan skip_all => 'Cannot connect to isbndb.com, cannot run any tests.';
-}
 
 WebService::ISBNDB::API->set_default_api_key(api_key());
 

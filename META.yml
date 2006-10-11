@@ -1,6 +1,6 @@
 ---
 name: WebService-ISBNDB
-version: 0.20
+version: 0.30
 author:
   - 'Randy J. Ray <rjray@blackperl.com>'
 abstract: Data and communication classes for talking to isbndb.com
@@ -27,7 +27,7 @@ provides:
     version: 0.20
   WebService::ISBNDB::API::Books:
     file: lib/WebService/ISBNDB/API/Books.pm
-    version: 0.20
+    version: 0.30
   WebService::ISBNDB::API::Categories:
     file: lib/WebService/ISBNDB/API/Categories.pm
     version: 0.20
@@ -39,10 +39,13 @@ provides:
     version: 0.20
   WebService::ISBNDB::Agent:
     file: lib/WebService/ISBNDB/Agent.pm
-    version: 0.20
+    version: 0.30
   WebService::ISBNDB::Agent::REST:
     file: lib/WebService/ISBNDB/Agent/REST.pm
-    version: 0.20
+    version: 0.30
+  WebService::ISBNDB::Iterator:
+    file: lib/WebService/ISBNDB/Iterator.pm
+    version: 0.10
 generated_by: Module::Build version 0.2805
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
