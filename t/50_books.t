@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: 50_books.t 32 2006-10-10 21:36:09Z  $
+# $Id: 50_books.t 40 2006-10-13 04:23:07Z  $
 
 use strict;
 use vars qw($CAN_PARSE_DATES $idx);
@@ -23,7 +23,7 @@ do "$dir/DUMMY.pm";
 
 WebService::ISBNDB::API->set_default_api_key(api_key());
 
-open my $fh, "< $dir/Books-isbn=0596002068.xml"
+open my $fh, "< $dir/xml/Books-isbn=0596002068.xml"
    or die "Error opening test XML: $!";
 my $body = join('', <$fh>);
 close($fh);
@@ -36,9 +36,9 @@ my @auth = ($body =~ /Person\s+person_id="(.*?)"/g);
 my @marc = ($body =~ /<MARC\s+(.*?)\s+\/>/g);
 my @price = ($body =~ /<Price\s+(.*?)\s+\/>/g);
 
-# 49 is the number of predefined tests, while the lists define the number of
+# 52 is the number of predefined tests, while the lists define the number of
 # on-the-fly tests.
-plan tests => 49 + @auth + @subj + 4*@marc + 12*@price;
+plan tests => 52 + @auth + @subj + 4*@marc + 12*@price;
 
 # For future ref: Need a book (or several) that has more of the data fields
 my $pwswp = '0596002068';
@@ -205,5 +205,12 @@ is($book->get_notes,
    'Includes bibliographical references (p. 434-437) and index.', 'Notes');
 is($book->get_urlstext, '', 'URLs text');
 is($book->get_awardstext, '', 'Awards text');
+
+# Try it with the Book ID instead of the ISBN
+$book = WebService::ISBNDB::API->new(Books =>
+                                     'programming_web_services_with_perl');
+isa_ok($book, 'WebService::ISBNDB::API::Books');
+is($book->get_id, 'programming_web_services_with_perl', 'ID');
+is($book->get_isbn, $pwswp, 'ISBN');
 
 exit;

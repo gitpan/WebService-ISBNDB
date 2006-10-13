@@ -5,12 +5,13 @@ use vars qw(@MODULES);
 
 use Test::More;
 
-# $Id: 00_load.t 13 2006-09-14 08:58:33Z  $
+# $Id: 00_load.t 36 2006-10-13 04:07:38Z  $
 # Verify that the individual modules will load
 
 BEGIN
 {
-    @MODULES = qw(WebService::ISBNDB::API
+    @MODULES = qw(WebService::ISBNDB
+                  WebService::ISBNDB::API
                   WebService::ISBNDB::API::Authors
                   WebService::ISBNDB::API::Books
                   WebService::ISBNDB::API::Categories

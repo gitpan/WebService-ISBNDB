@@ -1,11 +1,10 @@
 #!/usr/bin/perl
-
-# $Id: 05_api_baseclass.t 21 2006-09-25 01:48:00Z  $
+# $Id: 05_api_baseclass.t 37 2006-10-13 04:10:47Z  $
 
 use strict;
 
 use File::Basename 'dirname';
-use Test::More tests => 13;
+use Test::More tests => 15;
 
 use WebService::ISBNDB::API;
 
@@ -32,8 +31,12 @@ WebService::ISBNDB::API->set_default_api_key($key);
 WebService::ISBNDB::API->set_default_protocol('soap');
 
 $obj = WebService::ISBNDB::API->new();
-is($obj->get_default_api_key(), $key, 'Default API key');
-is($obj->get_default_protocol(), 'SOAP', 'Default protocol');
+is($obj->get_default_api_key, $key, 'Default API key');
+is($obj->get_default_protocol, 'SOAP', 'Default protocol');
+is($obj->get_api_key, $key, 'Object got default API key');
+
+$obj = WebService::ISBNDB::API->new({ api_key => 'XXX' });
+is($obj->get_api_key, 'XXX', 'Object got user-specified API key');
 
 # Test adding and removing types
 $obj->add_type('NewType', 'ISBNDB::NewType');

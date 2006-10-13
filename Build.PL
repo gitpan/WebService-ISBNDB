@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: Build.PL 34 2006-10-11 09:07:36Z  $
+# $Id: Build.PL 36 2006-10-13 04:07:38Z  $
 
 use Module::Build;
 
@@ -18,7 +18,6 @@ my $build = Module::Build->new(
     dist_author    => 'Randy J. Ray <rjray@blackperl.com>',
     dist_abstract  =>
     'Data and communication classes for talking to isbndb.com',
-    dist_version   => '0.30',
     sign           => 'here, please',
 );
 

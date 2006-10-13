@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: 60_iterator.t 33 2006-10-11 08:45:42Z  $
+# $Id: 60_iterator.t 40 2006-10-13 04:23:07Z  $
 
 use strict;
 use vars qw($idx);
@@ -26,7 +26,7 @@ sub extract_ids
 }
 
 # The first file has a different name-syntax:
-open $fh, "< $dir/Books-person_id=poe_edgar_allan.xml"
+open $fh, "< $dir/xml/Books-person_id=poe_edgar_allan.xml"
     or die "Error opening test XML: $!";
 $body = join('', <$fh>);
 close($fh);
@@ -35,7 +35,7 @@ push(@book_ids, extract_ids($body));
 # The other 25 all follow the same syntax:
 foreach (2 .. 26)
 {
-    open $fh, "< $dir/Books-page_number=$_-person_id=poe_edgar_allan.xml"
+    open $fh, "< $dir/xml/Books-page_number=$_-person_id=poe_edgar_allan.xml"
         or die "Error opening test XML: $!";
     $body = join('', <$fh>);
     close($fh);

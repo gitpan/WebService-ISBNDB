@@ -8,7 +8,7 @@
 #
 ###############################################################################
 #
-#   $Id: DUMMY.pm 31 2006-10-08 08:10:10Z  $
+#   $Id: DUMMY.pm 39 2006-10-13 04:18:41Z  $
 #
 #   Description:    This is a dummy-protocol stub that inherits from the REST
 #                   protocol module, but replaces the raw_content() method that
@@ -93,7 +93,7 @@ sub raw_request : RESTRICTED
         unless $argstring;
 
     # File name is the type + args. Throw an error if we can't open it.
-    my $file = "$BASEDIR/$type-$argstring.xml";
+    my $file = "$BASEDIR/xml/$type-$argstring.xml";
     throw Error::Simple("Error opening $file for reading: $!")
         unless open my $fh, "< $file";
 

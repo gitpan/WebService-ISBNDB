@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: 20_publishers.t 32 2006-10-10 21:36:09Z  $
+# $Id: 20_publishers.t 40 2006-10-13 04:23:07Z  $
 
 use strict;
 
@@ -16,7 +16,7 @@ do "$dir/DUMMY.pm";
 
 WebService::ISBNDB::API->set_default_api_key(api_key());
 
-open my $fh, "< $dir/Publishers-publisher_id=oreilly.xml"
+open my $fh, "< $dir/xml/Publishers-publisher_id=oreilly.xml"
    or die "Error opening test XML: $!";
 my $body = join('', <$fh>);
 close($fh);
