@@ -8,7 +8,7 @@
 #
 ###############################################################################
 #
-#   $Id: API.pm 37 2006-10-13 04:10:47Z  $
+#   $Id: API.pm 42 2006-12-02 10:50:57Z  $
 #
 #   Description:    This is the base class for the API classes: Books,
 #                   Publishers, Subjects (and the others as isbndb.com adds
@@ -65,7 +65,7 @@ use Class::Std;
 use Error;
 require WebService::ISBNDB::Agent;
 
-$VERSION = "0.21";
+$VERSION = "0.22";
 
 BEGIN
 {
@@ -177,7 +177,8 @@ sub new
     }
     else
     {
-        $new = $type ? $type->find($args) : $class->find($args);
+        $new = $type ? $type->new(\%obj_defaults) : $class->new(\%obj_defaults);
+        $new = $new->find($args);
     }
 
     $new;

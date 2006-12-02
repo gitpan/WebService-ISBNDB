@@ -1,6 +1,6 @@
 ---
 name: WebService-ISBNDB
-version: 0.31
+version: 0.32
 author:
   - 'Randy J. Ray <rjray@blackperl.com>'
 abstract: Data and communication classes for talking to isbndb.com
@@ -21,10 +21,10 @@ recommends:
 provides:
   WebService::ISBNDB:
     file: lib/WebService/ISBNDB.pm
-    version: 0.31
+    version: 0.32
   WebService::ISBNDB::API:
     file: lib/WebService/ISBNDB/API.pm
-    version: 0.21
+    version: 0.22
   WebService::ISBNDB::API::Authors:
     file: lib/WebService/ISBNDB/API/Authors.pm
     version: 0.20
