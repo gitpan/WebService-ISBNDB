@@ -8,7 +8,7 @@
 #
 ###############################################################################
 #
-#   $Id: ISBNDB.pm 43 2006-12-02 10:55:30Z  $
+#   $Id: ISBNDB.pm 44 2007-09-11 11:09:12Z  $
 #
 #   Description:    Empty, placeholder module for version-test capability.
 #
@@ -22,7 +22,7 @@ use 5.6.0;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = "0.32";
+$VERSION = "0.33";
 
 1;
 

@@ -1,6 +1,6 @@
 ---
 name: WebService-ISBNDB
-version: 0.32
+version: 0.33
 author:
   - 'Randy J. Ray <rjray@blackperl.com>'
 abstract: Data and communication classes for talking to isbndb.com
@@ -8,7 +8,7 @@ license: artistic
 resources:
   license: http://opensource.org/licenses/artistic-license.php
 requires:
-  Business::ISBN: 1.80
+  Business::ISBN: 2.0
   Class::Std: 0.0.8
   Error: 0.17
   LWP: 5.801
@@ -21,7 +21,7 @@ recommends:
 provides:
   WebService::ISBNDB:
     file: lib/WebService/ISBNDB.pm
-    version: 0.32
+    version: 0.33
   WebService::ISBNDB::API:
     file: lib/WebService/ISBNDB/API.pm
     version: 0.22
@@ -30,7 +30,7 @@ provides:
     version: 0.20
   WebService::ISBNDB::API::Books:
     file: lib/WebService/ISBNDB/API/Books.pm
-    version: 0.31
+    version: 0.32
   WebService::ISBNDB::API::Categories:
     file: lib/WebService/ISBNDB/API/Categories.pm
     version: 0.20
@@ -49,7 +49,7 @@ provides:
   WebService::ISBNDB::Iterator:
     file: lib/WebService/ISBNDB/Iterator.pm
     version: 0.10
-generated_by: Module::Build version 0.2805
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

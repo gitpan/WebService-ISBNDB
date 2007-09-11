@@ -1,5 +1,12 @@
 Revision history for Perl module WebService-ISBNDB.
-# $Id: ChangeLog 43 2006-12-02 10:55:30Z  $
+# $Id: ChangeLog 45 2007-09-11 11:12:05Z  $
+
+0.33	Tue Sep 11 04:04:20 PDT 2007
+
+	lib/WebService/ISBNDB/API/Books.pm:
+	Re-wrote areas that use Business::ISBN, due to some interface
+	changes in the latest version. Some just broke tests, but one
+	flat out broke this module.
 
 0.32	Sat Dec  2 03:46:00 MST 2006
 
