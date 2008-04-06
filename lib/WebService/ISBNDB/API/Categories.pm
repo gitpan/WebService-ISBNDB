@@ -1,14 +1,12 @@
 ###############################################################################
 #
-# This file copyright (c) 2006 by Randy J. Ray, all rights reserved
+# This file copyright (c) 2006-2008 by Randy J. Ray, all rights reserved
 #
-# Copying and distribution are permitted under the terms of the Artistic
-# License as distributed with Perl versions 5.005 and later. See
-# http://language.perl.com/misc/Artistic.html
+# See "LICENSE" in the documentation for licensing and redistribution terms.
 #
 ###############################################################################
 #
-#   $Id: Categories.pm 22 2006-09-25 02:14:52Z  $
+#   $Id: Categories.pm 49 2008-04-06 10:45:43Z  $
 #
 #   Description:    This is an extension of the API base-class that provides
 #                   the information specific to categories.
@@ -33,7 +31,7 @@
 
 package WebService::ISBNDB::API::Categories;
 
-use 5.6.0;
+use 5.006;
 use strict;
 use warnings;
 no warnings 'redefine';
@@ -43,7 +41,7 @@ use base 'WebService::ISBNDB::API';
 use Class::Std;
 use Error;
 
-$VERSION = "0.20";
+$VERSION = "0.21";
 
 my %id             : ATTR(:init_arg<id>     :get<id>     :default<>);
 my %parent         : ATTR(:init_arg<parent> :set<parent> :default<>);
@@ -349,6 +347,10 @@ sub normalize_args
     $count = 0; # Used to gradually increment the "indexX" and "valueX" keys
     foreach $key (@keys)
     {
+        # If we see "api_key", it means that WebService::ISBNDB::API::search
+        # curried it into the arglist due to the type-level search being
+        # called as a static method.
+        next if $key eq 'api_key';
         $value = $args->{$key};
         delete $args->{$key};
         $count++;
@@ -668,11 +670,11 @@ L<WebService::ISBNDB::API>
 
 Randy J. Ray E<lt>rjray@blackperl.comE<gt>
 
-=head1 COPYRIGHT
+=head1 LICENSE
 
-This module and the code within are copyright (c) 2006 by Randy J. Ray and
-released under the terms of the Artistic License
-(http://www.opensource.org/licenses/artistic-license.php). This
+This module and the code within are
+released under the terms of the Artistic License 2.0
+(http://www.opensource.org/licenses/artistic-license-2.0.php). This
 code may be redistributed under either the Artistic License or the GNU
 Lesser General Public License (LGPL) version 2.1
 (http://www.opensource.org/licenses/lgpl-license.php).

@@ -1,14 +1,12 @@
 ###############################################################################
 #
-# This file copyright (c) 2006 by Randy J. Ray, all rights reserved
+# This file copyright (c) 2006-2008 by Randy J. Ray, all rights reserved
 #
-# Copying and distribution are permitted under the terms of the Artistic
-# License as distributed with Perl versions 5.005 and later. See
-# http://language.perl.com/misc/Artistic.html
+# See "LICENSE" in the documentation for licensing and redistribution terms.
 #
 ###############################################################################
 #
-#   $Id: API.pm 42 2006-12-02 10:50:57Z  $
+#   $Id: API.pm 48 2008-04-06 10:38:11Z  $
 #
 #   Description:    This is the base class for the API classes: Books,
 #                   Publishers, Subjects (and the others as isbndb.com adds
@@ -54,7 +52,7 @@
 
 package WebService::ISBNDB::API;
 
-use 5.6.0;
+use 5.006;
 use strict;
 use warnings;
 no warnings 'redefine';
@@ -65,7 +63,7 @@ use Class::Std;
 use Error;
 require WebService::ISBNDB::Agent;
 
-$VERSION = "0.22";
+$VERSION = "0.23";
 
 BEGIN
 {
@@ -641,6 +639,7 @@ sub search
         throw Error::Simple("search: Unknown factory type '$type'")
             unless ($type = $self->class_for_type($type));
         eval "require $type;";
+        $args[0]->{api_key} = $self->get_api_key;
         return $type->search(@args);
     }
 
@@ -1315,11 +1314,11 @@ L<WebService::ISBNDB::API::Publishers>, L<WebService::ISBNDB::API::Subjects>
 
 Randy J. Ray E<lt>rjray@blackperl.comE<gt>
 
-=head1 COPYRIGHT
+=head1 LICENSE
 
-This module and the code within are copyright (c) 2006 by Randy J. Ray and
-released under the terms of the Artistic License
-(http://www.opensource.org/licenses/artistic-license.php). This
+This module and the code within are
+released under the terms of the Artistic License 2.0
+(http://www.opensource.org/licenses/artistic-license-2.0.php). This
 code may be redistributed under either the Artistic License or the GNU
 Lesser General Public License (LGPL) version 2.1
 (http://www.opensource.org/licenses/lgpl-license.php).

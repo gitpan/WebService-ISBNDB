@@ -1,14 +1,12 @@
 ###############################################################################
 #
-# This file copyright (c) 2006 by Randy J. Ray, all rights reserved
+# This file copyright (c) 2006-2008 by Randy J. Ray, all rights reserved
 #
-# Copying and distribution are permitted under the terms of the Artistic
-# License as distributed with Perl versions 5.005 and later. See
-# http://language.perl.com/misc/Artistic.html
+# See "LICENSE" in the documentation for licensing and redistribution terms.
 #
 ###############################################################################
 #
-#   $Id: Books.pm 44 2007-09-11 11:09:12Z  $
+#   $Id: Books.pm 48 2008-04-06 10:38:11Z  $
 #
 #   Description:    Specialization of the API class for book data.
 #
@@ -42,7 +40,7 @@
 
 package WebService::ISBNDB::API::Books;
 
-use 5.6.0;
+use 5.006;
 use strict;
 use warnings;
 no warnings 'redefine';
@@ -53,7 +51,7 @@ use Class::Std;
 use Error;
 use Business::ISBN;
 
-$VERSION = "0.32";
+$VERSION = "0.33";
 
 BEGIN
 {
@@ -209,6 +207,10 @@ sub normalize_args
     $count = 0; # Used to gradually increment the "indexX" and "valueX" keys
     foreach $key (@keys)
     {
+        # If we see "api_key", it means that WebService::ISBNDB::API::search
+        # curried it into the arglist due to the type-level search being
+        # called as a static method.
+        next if $key eq 'api_key';
         $value = $args->{$key};
         delete $args->{$key};
         $count++;
@@ -1510,11 +1512,11 @@ L<Business::ISBN>, L<Date::Parse>
 
 Randy J. Ray E<lt>rjray@blackperl.comE<gt>
 
-=head1 COPYRIGHT
+=head1 LICENSE
 
-This module and the code within are copyright (c) 2006 by Randy J. Ray and
-released under the terms of the Artistic License
-(http://www.opensource.org/licenses/artistic-license.php). This
+This module and the code within are
+released under the terms of the Artistic License 2.0
+(http://www.opensource.org/licenses/artistic-license-2.0.php). This
 code may be redistributed under either the Artistic License or the GNU
 Lesser General Public License (LGPL) version 2.1
 (http://www.opensource.org/licenses/lgpl-license.php).

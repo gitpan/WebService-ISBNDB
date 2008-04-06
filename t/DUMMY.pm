@@ -1,14 +1,10 @@
 ###############################################################################
 #
-# This file copyright (c) 2006 by Randy J. Ray, all rights reserved
-#
-# Copying and distribution are permitted under the terms of the Artistic
-# License as distributed with Perl versions 5.005 and later. See
-# http://language.perl.com/misc/Artistic.html
+# This file copyright (c) 2006-2008 by Randy J. Ray, all rights reserved
 #
 ###############################################################################
 #
-#   $Id: DUMMY.pm 39 2006-10-13 04:18:41Z  $
+#   $Id: DUMMY.pm 47 2008-04-06 10:12:34Z  $
 #
 #   Description:    This is a dummy-protocol stub that inherits from the REST
 #                   protocol module, but replaces the raw_content() method that
@@ -26,7 +22,7 @@
 
 package WebService::ISBNDB::Agent::DUMMY;
 
-use 5.6.0;
+use 5.006;
 use strict;
 use warnings;
 no warnings 'redefine';
